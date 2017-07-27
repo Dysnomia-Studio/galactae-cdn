@@ -569,6 +569,7 @@ footer table, footer table tr {
 .login-onglet input[type="submit"] {
 	width: calc(100% - 2px);
 	font-weight: bold;
+	margin-top: 1em;
 }
 .login-checkbox input {
 	width: auto !important;
