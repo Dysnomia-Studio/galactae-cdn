@@ -570,7 +570,7 @@ footer table, footer table tr {
 	width: calc(100% - 2px);
 	font-weight: bold;
 }
-#cg {
+.login-checkbox input {
 	width: auto !important;
 	margin: 0.4em !important;
 }
@@ -584,10 +584,6 @@ footer table, footer table tr {
 	height: auto !important;
 	line-height: 0;
 	display: inline !important;
-}
-.login-checkbox input {
-	width: auto;
-	margin-right: 0.2em;
 }
 /* Portail */
 .server-choice {
