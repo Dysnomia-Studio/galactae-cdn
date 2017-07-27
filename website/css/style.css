@@ -585,6 +585,10 @@ footer table, footer table tr {
 	line-height: 0;
 	display: inline !important;
 }
+.login-checkbox input {
+	width: auto;
+	margin-right: 0.2em;
+}
 /* Portail */
 .server-choice {
     width: 430px;
