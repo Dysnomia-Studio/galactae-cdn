@@ -587,11 +587,13 @@ footer table, footer table tr {
 	display: inline !important;
 }
 /* Portail */
-@media (min-height: 430px) and (min-width: 430px) {
+@media (min-height: 429px) and (min-width: 429px) {
 	.server-choice {
 		background-image: url(../img/server-list.png);
+
 	    width: 430px;
 	    height: 370px;
+	    
 		position: fixed;
 		top: 50%;
 		left: 50%;
@@ -602,6 +604,8 @@ footer table, footer table tr {
 }
 @media (max-height: 430px), (max-width: 430px) {
 	.server-choice {
+		background-color: #0b1012; 
+
 	    width: calc(100vw - 40px);
 	    height: calc(100vh - 40px);
 
