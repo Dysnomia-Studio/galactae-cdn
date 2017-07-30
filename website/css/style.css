@@ -587,19 +587,32 @@ footer table, footer table tr {
 	display: inline !important;
 }
 /* Portail */
+@media (min-height: 430px) and (min-width: 430px) {
+	.server-choice {
+		background-image: url(../img/server-list.png);
+	    width: 430px;
+	    height: 370px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+
+		margin-left: -215px;
+		margin-top: -185px;
+	}
+}
+@media (max-height: 430px), (max-width: 430px) {
+	.server-choice {
+	    width: calc(100vw - 40px);
+	    height: calc(100vh - 40px);
+
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+}
 .server-choice {
-    width: 430px;
-    height: 400px;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	margin-left: -215px;
-	margin-top: -200px;
-	background-image: url(../img/server-list.png);
 	color: #DDDDDD;
-	border-radius: 5px;
-    padding: 5px;
-    padding-right: 35px;
+	padding: 20px;
 	text-align: center;
 }
 .server-choice table {
