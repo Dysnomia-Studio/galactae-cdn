@@ -510,10 +510,24 @@ footer table, footer table tr {
 	background-size: auto, cover;
 }
 
+@media (min-width: 450px) and (min-height: 450px) {
+	.login {
+		width: 100%;
+		max-width: 401px;
+	}
+}
+@media (max-width: 450px) and (max-height: 450px) {
+	.login {
+		width: 100%;
+		height: 100%;
+
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+}
 .login {
 	background-color: #1D1D1D;
-	width: 100%;
-	max-width: 401px;
 	margin: 0 auto;
 	border-radius: 3px;
 	color: white;
