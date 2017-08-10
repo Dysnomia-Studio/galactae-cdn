@@ -524,6 +524,8 @@ footer table, footer table tr {
 		position: fixed;
 		top: 0;
 		left: 0;
+
+		overflow-y: auto;
 	}
 }
 .login {
