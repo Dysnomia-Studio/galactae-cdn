@@ -3,7 +3,7 @@ var socket;
 class webSockets {
 	static createConnection() {
 		//Connect to the server
-		socket = io.connect('https://'+gameServer, {secure: true, 'connect timeout': 10000 });
+		socket = io.connect('wss://'+gameServer, {secure: true, 'connect timeout': 10000 });
 
 		//Catch connection errors ( like server offline )
 		socket.on('connect_failed', function(){
@@ -66,7 +66,7 @@ class webSockets {
 		});
 		socket.on('server-general-alert', function(message) {
 			ui.drawMessage(message);
-			chat.sm("<span style=\"color: #438dce;\">" + messageList['SYSTEM_MESSAGE'] +"</span> " + " " + message);
+			chat.sm("<span style=\"color: #438dce;\">" + translate["messages"]['SYSTEM_MESSAGE'] +"</span> " + " " + message);
 		});
 
 		// Daily bonus !

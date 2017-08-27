@@ -1,5 +1,6 @@
 var RESEARCH_DIV_SIZE = 10000;
 var RESEARCH_DIV_DISTANCE = 500;
+var RESEARCH_DIV_DELTA_DISTANCE = 100;
 var prevMouse = [0,0];
 
 class research {
@@ -45,8 +46,10 @@ class research {
 		// Re-affichage de la planete
 		$("#planet-content").css('display','block');
 		// Re-affichage du chat si necessaire
-		$("#hud-chat").css('display',(ui.researchChat)?"block":"none");
-		ui.chat = ui.researchChat;
+		if(!ui.chat) {
+			$("#hud-chat").css('display',(ui.researchChat)?"block":"none");
+			ui.chat = ui.researchChat;
+		}
 
 		ui.research = false;
 	}
@@ -158,7 +161,7 @@ class research {
 	 * @param      {number}  y       Node center position y
 	 * @param      {string}  parent  The parent
 	 */
-	static drawNode(key,x,y,parent="") {
+	static drawNode(key,x,y,parent="",parentCount=0) {
 		if( $('#'+key+'-node').length ) { return; }
 
 		// Place this node
@@ -169,8 +172,8 @@ class research {
 		}
 
 		if(research.canResearch(key)) {
-			content += '<h2>' + researchList[key].name + '</h2>';
-			content += '<span class="research-desc">' + researchList[key].desc + '</span>';
+			content += '<h2>' + translate['research'][key].name + '</h2>';
+			content += '<span class="research-desc">' + translate['research'][key].desc + '</span>';
 			if(!research.isSearched(key)) {
 				content += '<span class="research-cost"><img height="20" src="'+cdnURL+'img/ui/research.png" alt="research">' + Math.floor(userData.research[key]) + '/' + research.list[key].cost + '</span>';
 				if(planetData.currResearch!=key) {
@@ -215,7 +218,7 @@ class research {
 			//countAngles++;
 			var topParent = parseInt($('#' + parent + '-node').position().top);
 			var topChild = parseInt($('#' + key + '-node').position().top);
-			var base = (topChild - topParent) / RESEARCH_DIV_DISTANCE;
+			var base = (topChild - topParent) / (RESEARCH_DIV_DISTANCE + (parentCount*RESEARCH_DIV_DELTA_DISTANCE));
 			while(base>1) { base-=2; }
 			while(base<-1) { base+=2; }
 			baseAngle = Math.asin(base); 
@@ -238,7 +241,7 @@ class research {
 			if(current.parents.length > 0 && current.parents[0]==key) {
 				var angle = (baseAngle + uniqueAngle*countAngles)%(2 * Math.PI);
 
-				research.drawNode(keyChild,x + RESEARCH_DIV_DISTANCE*Math.cos(angle),y + RESEARCH_DIV_DISTANCE*Math.sin(angle),key);
+				research.drawNode(keyChild,x + (RESEARCH_DIV_DISTANCE + (parentCount*RESEARCH_DIV_DELTA_DISTANCE))*Math.cos(angle),y + (RESEARCH_DIV_DISTANCE + (parentCount*RESEARCH_DIV_DELTA_DISTANCE))*Math.sin(angle),key,parentCount+1);
 
 				countAngles++;
 			}
@@ -264,7 +267,7 @@ class research {
 		var y2 = parseInt(parentPos.top) + (parseInt($('#' + parent + '-node').height())/2);
 		var color; //default 
 
-		if(research.canResearch(child)) { color = '#0EC6C6'; } 
+		if(research.isSearched(parent)) { color = '#0EC6C6'; } 
 		else { color = 'rgba(14,198,198,0.3)'; }
 
 		var newLine = document.createElementNS('http://www.w3.org/2000/svg','line');
@@ -316,7 +319,7 @@ class research {
 			 */
 			if(userData.research[parents[i]]!=-1 && parents[i]!="researchCenter") {
 				if(missingParents!="") { missingParents+=","; }
-				missingParents += " " + researchList[parents[i]].name;
+				missingParents += " " + translate['research'][parents[i]].name;
 			} else { // == -1 or parent is researchCenter
 				oneParentOK = true;
 			}
@@ -324,7 +327,7 @@ class research {
 		}
 
 		if(oneParentOK && parents.length>1) {
-			return messageList['MISSING_PARENTS'] + ':' + missingParents;
+			return translate["messages"]['MISSING_PARENTS'] + ':' + missingParents;
 		}
 
 		return "???";
@@ -353,13 +356,13 @@ class research {
  		
  		if(userData.research[planetData.currResearch]>research.list[planetData.currResearch].cost) {
  			userData.research[planetData.currResearch] = research.list[planetData.currResearch].cost;
-			ui.notify("Galactae: " + messageList['ENDED_RESEARCH'], {
+			ui.notify("Galactae: " + translate["messages"]['ENDED_RESEARCH'], {
 				icon: cdnURL+"img/favicon.png",
-				body: messageList['ENDED_RESEARCH'] + ": " + researchList[planetData.currResearch].name
+				body: translate["messages"]['ENDED_RESEARCH'] + ": " + translate['research'][planetData.currResearch].name
 			});
  			research.sync();
  		}
  		
- 		$("#"+planetData.currResearch+"-node .research-cost").html("<img height=\"20\" src=\"'+cdnURL+'img/ui/research.png\" alt=\"research\">" + Math.floor(userData.research[planetData.currResearch]) +"/"+research.list[planetData.currResearch].cost);
+ 		$("#"+planetData.currResearch+"-node .research-cost").html("<img height=\"20\" src=\""+cdnURL+"img/ui/research.png\" alt=\"research\">" + Math.floor(userData.research[planetData.currResearch]) +"/"+research.list[planetData.currResearch].cost);
  	}
 }

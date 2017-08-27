@@ -25,7 +25,7 @@ class ui {
 	 */
 	static drawMessage(msg) {
 		// Translation
-		if((messageList[msg] !=undefined) && (messageList[msg] !="")) { msg = messageList[msg]; }
+		if((translate["messages"][msg] !=undefined) && (translate["messages"][msg] !="")) { msg = translate["messages"][msg]; }
 		// Draw the message
 		$("#messagePanel").text(msg);
 		$("#messagePanel-div").fadeIn(1000);
@@ -44,9 +44,9 @@ class ui {
 		ui.menu = false;
 		ui.map = false;
 		ui.research = false;
-		ui.researchChat = true;
+		ui.researchChat = false;
 		ui.fleet = false;
-		ui.chat = true;
+		ui.chat = ($('#hud-chat').css('display')=="block");
 		ui.ranks = false;
 
 		ui.mouseStatus = [0,0,0,0];
@@ -75,6 +75,10 @@ class ui {
 		});
 		//HUD Buttons
 		ui.buttonsDefine();
+
+		$(window).resize(function() {
+			ui.loadHUDButtons();
+		});
 
 		// Load Research UI
 		research.loadUI();
@@ -120,6 +124,57 @@ class ui {
 			}
 		});*/
 	}
+
+	static loadHUDButtons() {
+		// HUD Top right
+		$('#hud-top-right-moveLeft').click(function() {
+			var scroll = $('#hud-top-right-content').scrollLeft();
+			scroll -= 20;
+			if(scroll<0) { scroll=0; }
+			$('#hud-top-right-content').scrollLeft(scroll);
+		});
+
+		$('#hud-top-right-moveRight').click(function() {
+			var scroll = $('#hud-top-right-content').scrollLeft();
+			scroll += 20;
+			if(scroll>$('#hud-top-right-content').width()) { scroll=$('#hud-top-right-content').width(); }
+			$('#hud-top-right-content').scrollLeft(scroll);
+		});
+		// HUD Top left
+		$('#hud-top-left-moveLeft').click(function() {
+			var scroll = $('#hud-top-left-content').scrollLeft();
+			scroll -= 20;
+			if(scroll<0) { scroll=0; }
+			$('#hud-top-left-content').scrollLeft(scroll);
+		});
+
+		$('#hud-top-left-moveRight').click(function() {
+			var scroll = $('#hud-top-left-content').scrollLeft();
+			scroll += 20;
+			if(scroll>$('#hud-top-left-content').width()) { scroll=$('#hud-top-left-content').width(); }
+			$('#hud-top-left-content').scrollLeft(scroll);
+		});
+
+		// Display none if needed	
+		if(document.getElementById('hud-top-left-content').scrollWidth
+			<= Math.round($('#hud-top-left-content').width())) {
+			$('#hud-top-left-moveRight').css('display','none');
+			$('#hud-top-left-moveLeft').css('display','none');
+		} else {
+			$('#hud-top-left-moveRight').css('display','block');
+			$('#hud-top-left-moveLeft').css('display','block');
+		}
+
+		if(document.getElementById('hud-top-right-content').scrollWidth
+			<= Math.round($('#hud-top-right-content').width())) {
+			$('#hud-top-right-moveRight').css('display','none');
+			$('#hud-top-right-moveLeft').css('display','none');
+		} else {
+			$('#hud-top-right-moveRight').css('display','block');
+			$('#hud-top-right-moveLeft').css('display','block');
+		}
+	}
+
 	/**
 	 * Tout les événements lorsqu'une touche est appuyée
 	 */
@@ -199,11 +254,11 @@ class ui {
 		var max = (planetData.Buildings[id]+1 > buildingMaxLvl[id]);
 
 		/* Planet Construction Tab */
-		$("#building-name").text(planetBuilding[id].name);
-		$("#building-level").text(messageList['LEVEL'] + ' ' +  planetData.Buildings[id]);
-		$("#building-desc").text(planetBuilding[id].desc);
+		$("#building-name").text(translate["buildings"][id].name);
+		$("#building-level").text(translate["messages"]['LEVEL'] + ' ' +  planetData.Buildings[id]);
+		$("#building-desc").text(translate["buildings"][id].desc);
 		$("#building-area").css("display","block");
-		$("#building-img").attr("src",cdnURL+"img/buildings/desc/"+planetBuilding[id].id+".jpg");
+		$("#building-img").attr("src",cdnURL+"img/buildings/desc/"+translate["buildings"][id].id+".jpg");
 		$("#building-area input").id=id;
 
 		/* Ressources */
@@ -241,9 +296,9 @@ class ui {
 		/* Bouton upgrade ou message */
 		// Defaut Value
 		if(planetData.Buildings[id]==0) {
-			$('#building-upgrade').val(messageList["BUILD"]);
+			$('#building-upgrade').val(translate["messages"]["BUILD"]);
 		} else {
-			$('#building-upgrade').val(messageList["UPGRADE"]);
+			$('#building-upgrade').val(translate["messages"]["UPGRADE"]);
 		}
 		$("#building-upgrade").attr("onclick","");
 		$('#building-upgrade').css('display', 'none');
@@ -252,25 +307,25 @@ class ui {
 
 		// Edits
 		if(max) { // Max Level
-			$('#building-message').html(messageList["UPGRADE_MAX"]);
+			$('#building-message').html(translate["messages"]["UPGRADE_MAX"]);
 		} else if(planetData.nextBuilding == id && planetData.nextBuildingTime > (Date.now() + planet.deltaNow)) { // Current building in build mode
-			$('#building-message').html(messageList["BUILD_FINISH_IN"] + " " + getStringTime((planetData.nextBuildingTime - (Date.now() + planet.deltaNow))/1000/3600));
+			$('#building-message').html(translate["messages"]["BUILD_FINISH_IN"] + " " + getStringTime((planetData.nextBuildingTime - (Date.now() + planet.deltaNow))/1000/3600));
 
 			ui.buildPanelInterval = setTimeout(function() {
 				ui.buildPanelOpen(id);
 			},1000);
 		} else if(ui.enoughResources>0) { // No enought Ressources
-			$('#building-message').html(messageList["ENOUGH_RESOURCES_AT"] + " " + getStringTime(ui.enoughResources));
+			$('#building-message').html(translate["messages"]["ENOUGH_RESOURCES_AT"] + " " + getStringTime(ui.enoughResources));
 
 			setTimeout(function() {
-				$('#building-message').html(messageList["ENOUGH_RESOURCES_AT"] + " " + getStringTime(ui.enoughResources-(1/3600)));
+				$('#building-message').html(translate["messages"]["ENOUGH_RESOURCES_AT"] + " " + getStringTime(ui.enoughResources-(1/3600)));
 			},1000);
 
 			ui.buildPanelInterval = setTimeout(function() {
 				ui.buildPanelOpen(id);
 			},2000);
 		} else if(planetData.nextBuilding!=-1 && planetData.nextBuildingTime > (Date.now() + planet.deltaNow)) { // Another building in build mode
-			$('#building-message').html(messageList["ANOTHER_IN_BUILD"]);
+			$('#building-message').html(translate["messages"]["ANOTHER_IN_BUILD"]);
 			ui.buildPanelInterval = setTimeout(function() {
 				ui.buildPanelOpen(id);
 			},planetData.nextBuildingTime - (Date.now() + planet.deltaNow + 1000));

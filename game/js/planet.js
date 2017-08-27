@@ -93,9 +93,9 @@ class planet {
 		if(planetData.nextBuildingTime != -1) {
 			autobuildingrefresh = setTimeout(function() {
 				planet.sync();
-				ui.notify("Galactae: " + messageList['ENDED_BUILDING_TITLE'], {
+				ui.notify("Galactae: " + translate["messages"]['ENDED_BUILDING_TITLE'], {
 					icon: cdnURL+"img/favicon.png",
-					body: messageList['ENDED_BUILDING_01'] + planetBuilding[planetData.nextBuilding].name + messageList['ENDED_BUILDING_02'] + planetData.Buildings[planetData.nextBuilding]
+					body: translate["messages"]['ENDED_BUILDING_01'] + translate['buildings'][planetData.nextBuilding].name + translate["messages"]['ENDED_BUILDING_02'] + planetData.Buildings[planetData.nextBuilding]
 				});
 				autobuildingrefresh = -1;
 			},planetData.nextBuildingTime-Date.now()+planet.deltaNow+1);
@@ -105,6 +105,9 @@ class planet {
 		if(ui.buildPanel!= -1) {
 			ui.buildPanelOpen(ui.buildPanel);
 		}
+
+		// Needed late after load ...
+		ui.loadHUDButtons();
 	}
 	/* simMyRealRessources
 	ClientSide simulation of growing resources
