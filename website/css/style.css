@@ -603,56 +603,61 @@ footer table, footer table tr {
 	display: inline !important;
 }
 /* Portail */
-@media (min-height: 429px) and (min-width: 429px) {
-	.server-choice {
-		background-image: url(../img/server-list.png);
-
-	    width: 430px;
-	    height: 370px;
-	    
-		position: fixed;
-		top: 50%;
-		left: 50%;
-
-		margin-left: -215px;
-		margin-top: -185px;
-	}
+.portal-body {
+	background-color: #0b1012;
 }
-@media (max-height: 430px), (max-width: 430px) {
-	.server-choice {
-		background-color: #0b1012; 
+#server-list {
+	list-style: none;
 
-	    width: calc(100vw - 40px);
-	    height: calc(100vh - 40px);
+	width: calc(100% - 3em);
+	max-width: 600px;
 
-		position: fixed;
-		top: 0;
-		left: 0;
-	}
+	max-height: calc(100% - 6em);
+
+	margin: 0 auto;
+	margin-top: 4em;
+	padding: 0.5em;
+
+	background-color: #0f1416;
+	border: 1px solid #0EC6C6;
+
+	overflow-x: auto;
 }
-.server-choice {
-	color: #DDDDDD;
-	padding: 20px;
-	text-align: center;
+#server-list li {
+	height: 2.5em;
+	padding: 0 0.8em;
+	color: #93fcfb;	
 }
-.server-choice table {
-	width: 100%;
+#server-list li * { 
+	vertical-align: middle;
 }
-.server-online {
+#server-list li .server_on, #server-list li .server_off, #server-list li .server_maintenance, #server-list li .server_unknown {
+	font-size: 2em;
+	margin-right: 0.2em;
+}
+#server-list li .server_on {
 	color: green;
 }
-.server-offline {
+#server-list li .server_off {
 	color: red;
 }
-.server-maintenance {
+#server-list li .server_maintenance {
 	color: orange;
 }
-.server-choice table tr td a {
-	text-decoration: none;
-	font-weight: bold;
-	color: #EEEEEE;
+#server-list li .server_unknown {
+	color: grey;
 }
-.server-choice table tr td a:hover {
+#server-list li .connect {
+	float: right;
+	line-height: 2.4em;
+	color: inherit;
+	text-decoration: none;
+}
+#server-list li .connect:hover {
 	text-decoration: underline;
-	color: #CCCCCC;
+}
+#server-list li.title {
+	text-align: center;
+	font-size: 1.5em;
+	padding: 
 }
