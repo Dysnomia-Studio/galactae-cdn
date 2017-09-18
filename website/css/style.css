@@ -653,7 +653,7 @@ footer table, footer table tr {
 	color: inherit;
 	text-decoration: none;
 }
-#server-list li .connect:hover {
+#server-list li a.connect:hover {
 	text-decoration: underline;
 }
 #server-list li.title {
