@@ -620,7 +620,7 @@ footer table, footer table tr {
 	margin: 0 5%;
 
 	text-align: center;
-	display: none;
+	color: white;
 	user-select: none;
 	background-color: rgba(11,17,19,1);
 	border: 1px solid #0d8384;
