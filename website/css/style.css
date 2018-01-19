@@ -686,5 +686,46 @@ footer table, footer table tr {
 #server-list li.title {
 	text-align: center;
 	font-size: 1.5em;
-	padding: 
+}
+
+/* Profil */
+#profil-main {
+	list-style: none;
+
+	width: calc(100% - 3em);
+	max-width: 600px;
+
+	max-height: calc(100% - 6em);
+
+	margin: 0 auto;
+	margin-top: 4em;
+	padding: 0.5em;
+
+	background-color: #0f1416;
+	border: 1px solid #0EC6C6;
+
+	color: white;
+
+	overflow-x: auto;
+}
+#profil-main h3, #profil-main h4 {
+	text-align: center;
+}
+#profil-main h4, #profil-main th, #profil-main span {
+	color: #93fcfb;
+}
+#profil-main span {
+	margin: 0 10%;
+}
+#profil-main table {
+	width: 100%;
+	text-align: center;
+}
+#profil-main #edit-button {
+	margin: 0.25em 0.5em;
+	float: right;
+}
+#profil-main #edit-button:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
