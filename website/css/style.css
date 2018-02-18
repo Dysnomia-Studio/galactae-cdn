@@ -156,42 +156,61 @@ footer table, footer table tr {
 }
 
 @media all and (orientation: portrait), (max-width: 850px) { /* Mobile Version et ecrans inferieurs a 851px de large */
-	/* Animate on Open */
-	@-webkit-keyframes openMenu { from { width: 1px; height: 1px; opacity: 0; } to { width: 100%; height: 100%; opacity: 1; }  }
-	@-moz-keyframes openMenu { from { width: 1px; height: 1px; opacity: 0; } to { width: 100%; height: 100%; opacity: 1; }  }
-	@-o-keyframes openMenu { from { width: 1px; height: 1px; opacity: 0; } to { width: 100%; height: 100%; opacity: 1; }  }
-	@keyframes openMenu { from { width: 1px; height: 1px; opacity: 0; } to { width: 100%; height: 100%; opacity: 1; }  }
+	#hamburger {
+		position: fixed;
+		top: 0.5em;
+		left: 0.5em;
 
-	@-webkit-keyframes closeMenu { from { width: 100%; height: 100%; opacity: 1; } to { width: 1px; height: 1px; opacity: 0; }  }
-	@-moz-keyframes closeMenu { from { width: 100%; height: 100%; opacity: 1; } to { width: 1px; height: 1px; opacity: 0; }  }
-	@-o-keyframes closeMenu { from { width: 100%; height: 100%; opacity: 1; } to { width: 1px; height: 1px; opacity: 0; }  }
-	@keyframes closeMenu { from { width: 100%; height: 100%; opacity: 1; } to { width: 1px; height: 1px; opacity: 0; }  }
+		max-height: 3em;
+
+		display: block;
+
+		z-index: 100;
+	}
+	#menu-back {
+		display: none;
+	}
 	#menu {
 		display: none;
+		
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 100%;
+
+		width: 65%;
 		height: 100%;
-		margin: 0;
-		padding: 0;
+
+		padding-top: 3.5em;
+
+		z-index: 99;
+
+		font-size: 1.2em;
+
+		background-color: rgba(0,0,0,0.75);
+
+		overflow-y: auto;
+	}
+	#menu ul {
 		list-style: none;
-		background-color: #0b1012;
-		text-align: center;
-		font-size: 2em;
-		line-height: 2em;
-		z-index: 5;
-		overflow: auto;
 	}
-	#hamburger {
-		display: block;
-		position: fixed;
-		z-index: 6;
-		top: 0;
-		left: 0;
-		margin: 5px;
-		width: 12%;
+	#menu li {
+		margin: 1em 0;
 	}
+	#menu a {
+		color: white;
+		text-decoration: none;
+	}
+	/* Animate on Open */
+	@-webkit-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+	@-moz-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+	@-o-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+	@keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+
+	@-webkit-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
+	@-moz-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
+	@-o-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
+	@keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
+
 	.menu {
 		display: block !important;
 		/* Animate on Open */
@@ -216,17 +235,8 @@ footer table, footer table tr {
 		animation-name: closeMenu;
 		animation-duration: 1.5s;
 	}
-	#menu li {
-		margin-left: 15px;
-		height: 1.8em;
-		border-bottom: 1px inset #7f8c8d;
-	}
-	#menu li:first-child {
-		margin-top: 1.8em;
-	}
-	#menu a {
-		text-decoration: none;
-		color: white;
+	.menu-logo {
+		text-align: center;
 	}
 	.icon, .icon-selected {
 		display: inline-block !important;
