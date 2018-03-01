@@ -548,20 +548,13 @@ footer table, footer table tr {
 	border-radius: 3px;
 	color: white;
 }
-.login table, tr {
+.login table {
+	table-layout: fixed;
 	width: 100%;
 }
 .login td {
-	min-width: 49.5%;
-	max-width: 50.5%;
-	display: inline-block;
 	text-align: center;
 	background-color: #292929;
-}
-@-moz-document url-prefix() { /* Petit bug d'affichage firefox */
-	.login td {
-		min-width: 48.98%;
-	}
 }
 .login .active {
 	background-color: #191919;
