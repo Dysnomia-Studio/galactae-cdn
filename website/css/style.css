@@ -266,6 +266,9 @@ footer table, footer table tr {
 	top: -2em;
 	z-index: -1;
 }
+#top-images-punchlines {
+	min-height: 2.5em;
+}
 #above-top-image {
 	color: white;
 	margin-left: 5%;
