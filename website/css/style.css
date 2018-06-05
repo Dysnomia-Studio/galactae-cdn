@@ -64,12 +64,12 @@ footer a {
   height: 4px;
 }
 ::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e1e1e;
-  border: 0px none #000000;
+  border: 0 none #000000;
   border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -80,7 +80,7 @@ footer a {
 }
 ::-webkit-scrollbar-track {
   background: #999999;
-  border: 0px none #000000;
+  border: 0 none #000000;
   border-radius: 50px;
 }
 ::-webkit-scrollbar-track:hover {
@@ -109,6 +109,7 @@ footer a {
 		z-index: 100;
 	}
 	.no-background {
+		background-color: rgb(0,0,0);
 		background-color: rgba(0,0,0,0.65);
 	}
 	#menu li {
@@ -122,14 +123,16 @@ footer a {
 	.menu-link:hover {
 	    color: #BBBBBB;
 	}
-	.menu-button {┴
+	.menu-button {
 		display: inline-block;
 		padding: 0.25em 1.2em;
 		border-radius: 0.15em;
 		font-size: 1.2em;
+		background-color:  rgb(200,200,200);
 		background-color: rgba(200,200,200,0.25);
 	}
 	.menu-button:hover {
+		background-color:  rgb(230,230,230);
 		background-color: rgba(230,230,230,0.25);
 	}
 	.menu-logo {
@@ -153,6 +156,17 @@ footer a {
 		display: none;
 	}
 }
+
+/* Animate on Open */
+@-webkit-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+@-moz-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+@-o-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+@keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
+
+@-webkit-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
+@-moz-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
+@-o-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
+@keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
 
 @media all and (orientation: portrait), (max-width: 850px) { /* Mobile Version et ecrans inferieurs a 851px de large */
 	#hamburger {
@@ -187,6 +201,7 @@ footer a {
 		font-size: 1.2em;
    		list-style: none;
 
+		background-color:  rgb(0,0,0);
 		background-color: rgba(0,0,0,0.75);
 
 		overflow-y: auto;
@@ -201,16 +216,6 @@ footer a {
 		color: white;
 		text-decoration: none;
 	}
-	/* Animate on Open */
-	@-webkit-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
-	@-moz-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
-	@-o-keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
-	@keyframes openMenu { from { left: -65%; opacity: 0; } to { left: 0; opacity: 1; }  }
-
-	@-webkit-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
-	@-moz-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
-	@-o-keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
-	@keyframes closeMenu { from { left: 0; opacity: 1; } to { left: -65%; opacity: 0; }  }
 
 	.menu {
 		display: block !important;
@@ -262,7 +267,7 @@ footer a {
 	margin: 0;
 	padding: 0;
 	position: relative;
-	top: -2em;
+	top: 0.5vh;
 	z-index: -1;
 }
 #top-images-punchlines {
@@ -291,6 +296,7 @@ footer a {
 }
 #join {
 	font-family: 'Montserrat', sans-serif;
+	background-color:  rgb(200,200,200);
 	background-color: rgba(200,200,200,0.25);
 	text-transform: uppercase;
 	max-width: 100%;
@@ -298,6 +304,7 @@ footer a {
 	font-size: 0.8em;
 }
 #join:hover {
+	background-color:  rgb(230,230,230);
 	background-color: rgba(230,230,230,0.25);
 }
 #join a {
@@ -309,14 +316,14 @@ footer a {
 }
 .index-desc {
 	width: 90%;
-	margin: 2em 0em;
+	margin: 2em 0;
 	margin-left: 5%;
 }
 .index-desc table, .index-desc tr {
 	width: 100%;
 }
 .index-desc table tr td {
-	padding: 0em 2em;
+	padding: 0 2em;
 	vertical-align: top;
 }
 @media all and (orientation: landscape) {
@@ -379,6 +386,7 @@ footer a {
 	bottom: 0;
 	left: 0;
 	right: 0;
+	background-color:  rgb(0,0,0);
 	background-color: rgba(0,0,0,0.6);
 	z-index: 1234;
 }
@@ -440,7 +448,7 @@ footer a {
 }
 .devblog article, .theteam article {
 	background-color: #EEEEEE;
-	margin: 3em 0em;
+	margin: 3em 0;
 	padding: 1.5em;
 }
 .devblog a {
@@ -562,7 +570,6 @@ footer a {
 }
 .login a {
 	width: 100%;
-	height: 100%;
 	display: inline-block;
 	height: 3em;
 	line-height: 3em;
@@ -586,8 +593,11 @@ footer a {
 	width: calc(100% - 4px - 2em);
 	padding: 1em;
 	margin: 0.4em auto;
+	background-color:  rgb(0,0,0);
 	background-color: rgba(0,0,0,0.5);
+	color:  rgb(255,255,255);
 	color: rgba(255,255,255,0.7);
+	border: 1px solid rgb(255,255,255);
 	border: 1px solid rgba(255,255,255,0.3);
 }
 .login-onglet input[type="submit"] {
@@ -626,10 +636,10 @@ footer a {
 	color: white;
 	display: none;
 	user-select: none;
-	background-color: rgba(11,17,19,1);
+	background-color: rgb(11,17,19);
 	border: 1px solid #0d8384;
 
-	word-break: break-word;
+	word-break: break-all;
 
 	padding: 0.75em;
 
