@@ -30,6 +30,7 @@ window.addEventListener('load',function() {
 	document.getElementById('register-button').addEventListener('click', function() {
 		register();
 	});
+
 	if(window.location.hash == '#register'){
 		register();
 	}
@@ -41,8 +42,7 @@ window.addEventListener('load',function() {
 		active('forgot-pass');
 	});
 
-
 	document.getElementById('rememberMe').addEventListener('change', function() {
-		setCookie('rememberMe',document.getElementById('rememberMe').checked,30);
+		setCookie('rememberMe',document.getElementById('rememberMe').checked, 30);
 	});
 });
