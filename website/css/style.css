@@ -730,6 +730,7 @@ footer a {
 #profil-main table {
 	width: 100%;
 	text-align: center;
+	color: white;
 }
 #profil-main #edit-button {
 	margin: 0.25em 0.5em;
