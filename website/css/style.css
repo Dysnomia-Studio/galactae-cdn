@@ -21,6 +21,8 @@ html, body {
 
 /* FOOTER */
 footer {
+	box-sizing: border-box;
+
 	/* Couleurs et police */
 	background-color: #1D1D1D;
 	color: white;
@@ -29,6 +31,7 @@ footer {
 	/* Positionnements */
 	font-size: 0.7em;
 	width: 100%;
+	padding: 1em;
 	vertical-align: bottom;
 }
 footer table, footer table tr {
@@ -46,6 +49,7 @@ footer a {
 }
 .first-footer td ul {
 	list-style: none;
+	padding: 0;
 }
 .first-footer a {
 	text-decoration: none;
