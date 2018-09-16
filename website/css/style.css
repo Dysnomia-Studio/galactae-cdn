@@ -1,22 +1,14 @@
 /* BODY */
 html, body {
-	/* On evite les horribles espaces blancs sur les bords de certains navigateurs */
-	position: fixed;
-	top: 0;
-	left: 0;
-	margin: 0;
-	padding: 0;
-
 	width: 100%; /* Necessaire pour le centrage de certaines sections */
 	height: 100%; /* Necessaires pour le design de certaines pages */
+	margin: 0;
+	padding: 0;
 
 	/* Couleurs et police de base */
 	background-color: #FBFBFA;
 	color: #1D1D1D;
 	font-family: 'Raleway', sans-serif;
-
-	/* Scrollbars */
-	overflow: auto;
 }
 
 /* FOOTER */
