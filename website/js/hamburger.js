@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
 	    var bouton = boutonsMenu[i];
 	    bouton.onclick = function() {
 	        CloseMenu();
-	    }
+	    };
 	}
 
 	hamburger.addEventListener('click', function() {
