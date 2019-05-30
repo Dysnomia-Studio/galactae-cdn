@@ -529,7 +529,9 @@ footer a {
 
     position: fixed;
     width: 100%;
-	height: 100%;
+	height: calc(100% - 2em);
+	overflow-y: auto;
+	padding-bottom: 2em;
 }
 
 @media (min-width: 450px) and (min-height: 450px) {
@@ -736,4 +738,7 @@ footer a {
 #profil-main #edit-button:hover {
 	text-decoration: underline;
 	cursor: pointer;
+}
+#editprofil {
+	display: block;
 }
