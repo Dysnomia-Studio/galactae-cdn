@@ -569,7 +569,7 @@ footer a {
 .login .active {
 	background-color: #191919;
 }
-.login a {
+.login a, #profil-main a {
 	width: 100%;
 	display: inline-block;
 	height: 3em;
@@ -578,7 +578,7 @@ footer a {
 	color: white;
 	text-decoration: none;
 }
-.login a:hover {
+.login a:hover, #profil-main a {
 	color: #DDDDDD;
 }
 .login-onglet {
