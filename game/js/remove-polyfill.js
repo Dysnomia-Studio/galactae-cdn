@@ -1,0 +1,1 @@
+(function(){const typesToPatch=["DocumentType","Element","CharacterData"],remove=function(){if(this.parentNode!=null){this.parentNode.removeChild(this)}};for(let i=0;i<typesToPatch.length;i++){const type=typesToPatch[i];if(window[type]&&!window[type].prototype.remove){window[type].prototype.remove=remove}}})();
