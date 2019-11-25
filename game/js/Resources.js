@@ -1,1 +1,3 @@
-(function(exports){exports.Resources=class Resources{static get planetRatios(){return[{ironRatio:.35,aluRatio:.5,copperRatio:.04,titanRatio:.1}]}static GetRatiosPerPlanet(type){if(Resources.planetRatios[type]!==undefined){return Resources.planetRatios[type]}return Resources.planetRatios[0]}}})(typeof exports==="undefined"?window:exports);
+class Resources extends _Resources {
+	
+}
