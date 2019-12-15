@@ -1,3 +1,1 @@
-class Buildings extends _Buildings {
-	
-}
+class Buildings extends _Buildings{}

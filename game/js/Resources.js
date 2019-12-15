@@ -1,3 +1,1 @@
-class Resources extends _Resources {
-	
-}
+class Resources extends _Resources{}

@@ -1,3 +1,1 @@
-class Fleets extends _Fleets {
-	
-}
+class Fleets extends _Fleets{}

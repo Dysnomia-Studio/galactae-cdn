@@ -1,3 +1,1 @@
-class GameMap extends _GameMap {
-	
-}
+class GameMap extends _GameMap{}
