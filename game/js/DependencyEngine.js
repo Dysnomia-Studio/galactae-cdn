@@ -1,0 +1,1 @@
+class DependencyEngine extends _DependencyEngine{}
