@@ -1,0 +1,1 @@
+(function(exports){exports._Conquest=class Conquest{static minPointForPlanetCount(count){count--;return Math.ceil(.013*Math.pow(count,3)-1.85*Math.pow(count,2)+1520*count-750)}static getPlanetMaxCount(points){let i=1;while(points>Conquest.minPointForPlanetCount(i+1)){i++}return i}}})(typeof exports==="undefined"?window:exports);
