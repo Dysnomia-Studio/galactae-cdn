@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v3.1.1
         with:
           push: true
-          tags: ghcr.io/dysnomia-studio/galactae-cdn:${{ steps.vars.outputs.tag }}
+          tags: ghcr.io/dysnomia-studio/galactae-cdn:${{github.ref_name}}
           build-args: |
             NPM_TOKEN=${{secrets.GITHUB_TOKEN}}  
   
