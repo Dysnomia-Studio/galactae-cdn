@@ -1,0 +1,48 @@
+name: Build & Test
+
+on: [push]
+
+permissions:
+  packages: write
+  contents: read
+
+jobs:
+  build_tag:
+    if: startsWith(github.event.ref, 'refs/tags/')
+  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & Push Docker image
+        uses: docker/build-push-action@v3.1.1
+        with:
+          push: true
+          tags: ghcr.io/dysnomia-studio/factory-game-server:${{ steps.vars.outputs.tag }}
+          build-args: |
+            NPM_TOKEN=${{secrets.GITHUB_TOKEN}}  
+  
+  build_branch:
+    if: ${{ (github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/feature/')) && github.event_name == 'push' }}
+  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & Push Docker image
+        uses: docker/build-push-action@v3.1.1
+        with:
+          push: true
+          tags: ghcr.io/dysnomia-studio/factory-game-server:${{ github.head_ref || github.ref_name }} 
+          build-args: |
+            NPM_TOKEN=${{secrets.GITHUB_TOKEN}}  
