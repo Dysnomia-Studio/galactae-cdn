@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v3.1.1
         with:
           push: true
-          tags: ghcr.io/dysnomia-studio/factory-game-server:${{ steps.vars.outputs.tag }}
+          tags: ghcr.io/dysnomia-studio/galactae-cdn:${{ steps.vars.outputs.tag }}
           build-args: |
             NPM_TOKEN=${{secrets.GITHUB_TOKEN}}  
   
@@ -43,6 +43,6 @@ jobs:
         uses: docker/build-push-action@v3.1.1
         with:
           push: true
-          tags: ghcr.io/dysnomia-studio/factory-game-server:${{ github.head_ref || github.ref_name }} 
+          tags: ghcr.io/dysnomia-studio/galactae-cdn:${{ github.head_ref || github.ref_name }} 
           build-args: |
             NPM_TOKEN=${{secrets.GITHUB_TOKEN}}  
