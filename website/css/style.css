@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('https://cdn.galactae.eu/website/fonts/Montserrat-Regular.ttf');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('https://cdn.galactae.eu/website/fonts/Raleway-Regular.ttf');
+    font-display: swap;
+}
+
 /* BODY */
 html, body {
 	width: 100%; /* Necessaire pour le centrage de certaines sections */
