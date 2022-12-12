@@ -24,12 +24,8 @@ jobs:
         with:
           push: true
           tags: ghcr.io/dysnomia-studio/galactae-cdn:${{github.ref_name}}
-          build-args: |
-            NPM_TOKEN=${{secrets.GITHUB_TOKEN}}  
   
   build_branch:
-    if: ${{ (github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/heads/feature/')) && github.event_name == 'push' }}
-  
     runs-on: ubuntu-latest
     steps:
       - name: Login to GitHub Container Registry
@@ -44,5 +40,3 @@ jobs:
         with:
           push: true
           tags: ghcr.io/dysnomia-studio/galactae-cdn:${{ github.head_ref || github.ref_name }} 
-          build-args: |
-            NPM_TOKEN=${{secrets.GITHUB_TOKEN}}  
