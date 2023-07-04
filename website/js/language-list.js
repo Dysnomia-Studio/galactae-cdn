@@ -22,8 +22,8 @@ window.addEventListener("load", function(){
     iconSelect = new IconSelect("language-list");
 
     var icons = [];
-    icons.push({'iconFilePath':'https://03.cdn.elanis.eu/website/img/flags/fr.png', 'iconValue':'Francais'});
-    icons.push({'iconFilePath':'https://03.cdn.elanis.eu/website/img/flags/en.png', 'iconValue':'English'});
+    icons.push({'iconFilePath':'https://cdn.galactae.eu/website/img/flags/fr.png', 'iconValue':'Francais'});
+    icons.push({'iconFilePath':'https://cdn.galactae.eu/website/img/flags/en.png', 'iconValue':'English'});
     //icons.push({'iconFilePath':'https://03.cdn.elanis.eu/website/img/flags/ru.png', 'iconValue':'русский'});
     //icons.push({'iconFilePath':'https://03.cdn.elanis.eu/website/img/flags/de.png', 'iconValue':'Deutsch'});
     
