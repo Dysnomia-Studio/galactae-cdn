@@ -1,6 +1,9 @@
-FROM nginx:latest
-WORKDIR /usr/share/nginx/html
+FROM nginx:1.26.1
 
-# Build Project
-COPY . /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/nginx.conf
+RUN  touch /var/run/nginx.pid && \
+     chown -R nginx:nginx /var/cache/nginx /var/run/nginx.pid /etc/nginx/conf.d/
+
+USER nginx
+
+COPY --chown=nginx:nginx . /usr/share/nginx/html/
+COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
