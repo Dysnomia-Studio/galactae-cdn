@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 jobs:
-  build_tag:
+  build_and_push_tag:
     if: startsWith(github.event.ref, 'refs/tags/')
   
     runs-on: ubuntu-latest
@@ -24,19 +24,15 @@ jobs:
         with:
           push: true
           tags: ghcr.io/dysnomia-studio/galactae-cdn:${{github.ref_name}}
-  
-  build_branch:
+
+  deploy_app:
+    needs: build_and_push_tag
+
     runs-on: ubuntu-latest
     steps:
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+      - name: Update infra
+        uses: peter-evans/repository-dispatch@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build & Push Docker image
-        uses: docker/build-push-action@v6.1.0
-        with:
-          push: true
-          tags: ghcr.io/dysnomia-studio/galactae-cdn:${{ github.head_ref || github.ref_name }} 
+          token: ${{ secrets.UPDATE_INFRA_TOKEN }}
+          repository: Dysnomia-studio/argocd-infra
+          event-type: update-infra
