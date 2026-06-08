@@ -1,9 +1,12 @@
-FROM nginx:1.26.1
+FROM nginx:1.30.2-otel
 
 RUN  touch /var/run/nginx.pid && \
-     chown -R nginx:nginx /var/cache/nginx /var/run/nginx.pid /etc/nginx/conf.d/
+     chown -R nginx:nginx /var/cache/nginx /var/run/nginx.pid /etc/nginx/conf.d
+
+# Website
+COPY --chown=nginx:nginx . /usr/share/nginx/html/
+# Config
+COPY --chown=nginx:nginx nginx.conf  /etc/nginx/nginx.conf
+COPY --chown=nginx:nginx nginx.conf.template /etc/nginx/templates/default.conf.template
 
 USER nginx
-
-COPY --chown=nginx:nginx . /usr/share/nginx/html/
-COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
